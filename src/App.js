@@ -36,29 +36,31 @@ function App() {
       <h2>Notes App</h2>
       <div>
         <form className="notes-form">
-          <input  style={{ backgroundColor: cardBgColor }}
+          <input   style={{ backgroundColor: cardBgColor }}
             type="text"
             value={noteTitle}
-            onChange={(e) => setNoteTitle(e.target.value)}
+            onChange={(e) => setNoteTitle(e.target.value)} 
+            placeholder="Add Your Title Here" 
           />
           <textarea  style={{ backgroundColor: cardBgColor }}
             type="text"
             value={noteTask}
             onChange={(e) => setNoteTask(e.target.value)}
+            placeholder="Add Your Description Here"
           />
         </form>
         <button onClick={()=>setPinNotes((prev)=> !prev)}>{pinNotes ? "UNPIN" : "PIN"}</button>
         <button onClick={notesHandler}>Add Note</button>
-        <button onClick={() => setCardBgColor("#fbbd33")}>yellow</button>
-        <button onClick={() => setCardBgColor("#c8f08f")}>green</button>
+        <button onClick={() => setCardBgColor("#fbbd33")}>YELLOW</button>
+        <button onClick={() => setCardBgColor("#c8f08f")}>GREEN</button>
         <button onClick={() => setCardBgColor("#a5f8ea")}>blue</button>
 
-        <section className="notes-card">
+        <section className="notes-card flex-center">
           {pinnedNotes.map((note) => {
             return <Card title={note.title} task={note.task} bgColor={ note.bgColor } key={note.id} />;
           })}
         </section>
-        <section className="notes-card">
+        <section className="notes-card flex-center">
           {unpinnedNotes.map((note) => {
             return <Card title={note.title} task={note.task} bgColor={ note.bgColor } key={note.id} pin = {note.pinNotes}/>;
           })}
